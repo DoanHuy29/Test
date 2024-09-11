@@ -1,0 +1,45 @@
+Request 1: 
+	select count(distinct Client_ID) from ORDER; -- Count unique client
+
+	select 
+		Client_ID, 
+		year(str_to_date(Date_Order, '%d.%b.%Y')) as Year, 
+		month(str_to_date(Date_Order, '%d.%b.%Y')) as Month, 
+		count(Order_ID) as Number_of_Order
+	from ORDER
+	group by 
+		Client_ID, 
+		year(str_to_date(Date_Order, '%d.%b.%Y')),
+		month(str_to_date(Date_Order, '%d.%b.%Y'))
+	order by
+		Client_ID, 
+		year(str_to_date(Date_Order, '%d.%b.%Y')),
+		month(str_to_date(Date_Order, '%d.%b.%Y'));
+Reques 2:
+	select count(Client_ID),  Client_ID
+	from ORDER  
+	where Date_Order like '%2024%'
+	group by Client_ID
+	having count(Client_ID) > 10;
+Request 3:
+	select Date_Order, Good_Type, Good_Amount from ORDER
+	order by str_to_date(Date_Order, '%d.%b.%Y') desc
+	limit 2;
+Request 4:
+	select count(Order_ID)
+	from ORDER_DELIVERY
+	where Date_Delivery like '%Sep.2019%'; -- Count number of Oder
+
+	select sum(ORDER.Good_Amount*Good_Count)
+	from(
+		select ORDER.Order_ID, count(ORDER_DELIVERY.Order_ID) as Good_Count, 				ORDER.Good_Amount
+		from ORDER_DELIVERY 
+		inner join ORDER on ORDER_DELIVERY.Order_ID = ORDER.Order_ID
+		where ORDER_DELIVERY.Date_Delivery like '%Sep.2019%'
+		group by ORDER.Order_ID
+	); -- Caculate total good amount
+Request 5: Nếu 2 bảng có dữ liệu lớn và mỗi lần Join mất nhiều thời gian hơn 1 ngày mà chúng ta cần báo cáo hàng ngày thì giải pháp của mình sẽ là copy lượng thông tin mới được thêm vào trong ngày của 2 bảng ra 2 bảng mới và chúng ta chỉ cần Join 2 bảng chỉ chứa lượng thông tin trong ngày cần báo cáo.
+
+	
+	
+	

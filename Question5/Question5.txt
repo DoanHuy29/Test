@@ -1,0 +1,12 @@
+Sử dụng Git Bash (Git Bash tại Desktop, cả tệp và folder đều nằm tại Desktop):
+
+	mv text.txt LinuxProject 	//Import the file text.txt inside LinuxProject folder
+	cat ~/OneDrive/Desktop/LinuxProject/text.txt		//Display contents
+	echo "Let's learn Linux" >> ~/OneDrive/Desktop/LinuxProject/text.txt		//Append new text to text.txt
+	wc -l ~/OneDrive/Desktop/LinuxProject/text.txt		//Count number of lines
+	grep "Love" ~/OneDrive/Desktop/LinuxProject/text.txt		//Search and display the lines containing "Love"
+	sed -i 's/Make/Do/g' ~/OneDrive/Desktop/LinuxProject/text.txt	//Replace "Make" with "Do"
+	awk '{print $3}' ~/OneDrive/Desktop/LinuxProject/text.txt	//Display only third word from each line
+	awk '{print "Line " NR ": " NF " words"}' ~/OneDrive/Desktop/LinuxProject/text.txt	//Count number of words in each line
+
+

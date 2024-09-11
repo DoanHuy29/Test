@@ -1,0 +1,7 @@
+Cách 1: Lưu trữ địa chỉ trong bảng khách hàng.
+	Ưu điểm: Đơn giản vì chỉ cần 1 bảng để lưu trữ thông tin.
+	                Truy vấn thông tin khách hàng và địa chỉ nhanh.
+	Nhược điểm: Không linh hoạt vì mỗi lần thay đổi địa chỉ sẽ ghì đè lên địa chỉ trước đó.
+Cách 2: Tạo riêng một bảng để lưu trữ địa chỉ và liên kết với bảng khách hàng.
+	Ưu điểm: Quản lý dễ dàng vì khi thay đổi địa chỉ thì vẫn có thể giữ được địa chỉ cũ, cũng như truy vấn lịch sử giao hàng dù có thay đổi địa chỉ.
+	Nhược điểm: Phức tạp hơn, tăng chi phí lưu trữ cũng như thời gian xử lý khi 1 khách hàng có nhiều địa chỉ.	
